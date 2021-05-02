@@ -1,4 +1,4 @@
-import { solveSudoku } from "./utils/solver.js";
+import { solveSudoku } from './utils/solver.js'
 
 const notSolvedSudoku = []
 
@@ -13,5 +13,5 @@ notSolvedSudoku.push([0,6,0,0,0,0,2,8,0])
 notSolvedSudoku.push([0,0,0,4,1,9,0,0,5])
 notSolvedSudoku.push([0,0,0,0,8,0,0,7,9])
 
-console.log(solveSudoku(notSolvedSudoku))
+solveSudoku(notSolvedSudoku)
 
