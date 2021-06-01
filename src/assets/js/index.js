@@ -1,4 +1,6 @@
+import { validateSudoku } from "./utils/validator.js";
 import { solveSudoku } from "./utils/solver.js";
+import { collectInfoFromInputFields } from "./utils/input.js";
 
 const solveButton = document.getElementById('solve-button')
 const clearButton = document.getElementById('clear-button')
@@ -8,31 +10,19 @@ clearButton.addEventListener('click', clearInputFields)
 
 function solveInputFieldsSudoku() {
     const sudokuInputFields = document.getElementsByClassName('sudoku-input')
+    const sudoku = collectInfoFromInputFields()
 
-    const sudoku = []
-    let sudokuRow = []
+    if (validateSudoku(sudoku)) {
+        const solvedSudoku = solveSudoku(sudoku)
 
-    for (const inputField of sudokuInputFields) {
-        if (inputField.value !== '') {
-            sudokuRow.push(Number.parseInt(inputField.value))
-        } else {
-            sudokuRow.push(0)
+        for (let i = 0; i < solvedSudoku.length; i++) {
+            for (let j = 0; j < solvedSudoku[i].length; j++) {
+                sudokuInputFields[i * 9 + j].value = solvedSudoku[i][j]
+            }
         }
-
-        if (sudokuRow.length === 9) {
-            sudoku.push(sudokuRow)
-            sudokuRow = []
-        }
+    } else {
+        alert('Enter correct sudoku!')
     }
-
-    const solvedSudoku = solveSudoku(sudoku)
-
-    for (let i = 0; i < solvedSudoku.length; i++) {
-        for (let j = 0; j < solvedSudoku[i].length; j++) {
-            sudokuInputFields[i * 9 + j].value = solvedSudoku[i][j]
-        }
-    }
-
 }
 
 function clearInputFields() {
