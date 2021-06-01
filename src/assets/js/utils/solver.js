@@ -87,8 +87,8 @@ function checkBlock(sudoku, coord, checkedNumber) {
     const rowBlockIndex = Math.floor(coord.row / 3)
     const columnBlockIndex = Math.floor(coord.col / 3)
 
-    for (let i = start[rowBlockIndex]; i < end[rowBlockIndex]; i++) {
-        for (let j = start[columnBlockIndex]; j < end[columnBlockIndex]; j++) {
+    for (let i = start[rowBlockIndex]; i <= end[rowBlockIndex]; i++) {
+        for (let j = start[columnBlockIndex]; j <= end[columnBlockIndex]; j++) {
             if (i !== coord.row && j !== coord.col && sudoku[i][j] === checkedNumber) {
                 return false
             }

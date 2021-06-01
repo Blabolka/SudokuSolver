@@ -4,45 +4,19 @@
     <meta charset="UTF-8">
     <title>Sudoku Solver</title>
     <link href="assets/css/style.css" rel="stylesheet">
+    <script type="module" src="assets/js/createTable.js" async></script>
     <script type="module" src="assets/js/input.js" defer></script>
     <script type="module" src="assets/js/index.js" defer></script>
 </head>
 
 <body>
     <div class="container">
-        <div id="sudoku-div"></div>
+        <div id="sudoku-div"></div> <!-- table is filled by script-->
         <div class="buttons">
             <button id="solve-button" type="button" class="btn blue">solve</button>
             <button id="clear-button" type="button" class="btn grey">clear</button>
         </div>
     </div>
 </body>
-
-<script>
-    const sudokuDiv = document.getElementById('sudoku-div')
-
-    const table = document.createElement('table')
-    table.setAttribute('class', 'sudoku-table')
-
-    for (let i = 0; i < 9; i++) {
-        const tr = document.createElement('tr')
-        tr.setAttribute('class', 'sudoku-row')
-
-        for (let j = 0; j < 9; j++) {
-            const td = document.createElement('td')
-            td.setAttribute('class', 'sudoku-col')
-
-            const input = document.createElement('input')
-            input.setAttribute('type', 'text')
-            input.setAttribute('class', 'sudoku-input')
-
-            td.appendChild(input)
-            tr.appendChild(td)
-        }
-        table.appendChild(tr)
-    }
-
-    sudokuDiv.appendChild(table)
-</script>
 
 </html>
