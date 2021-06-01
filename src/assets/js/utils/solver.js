@@ -17,6 +17,7 @@ export function solveSudoku(sudoku) {
         col: 0
     })
 
+    exitStatus = false
     return sudoku
 }
 

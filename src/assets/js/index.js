@@ -1,17 +1,44 @@
-import { solveSudoku } from './utils/solver.js'
+import { solveSudoku } from "./utils/solver.js";
 
-const notSolvedSudoku = []
+const solveButton = document.getElementById('solve-button')
+const clearButton = document.getElementById('clear-button')
 
-// test sudoku data
-notSolvedSudoku.push([5,3,0,0,7,0,0,0,0])
-notSolvedSudoku.push([6,0,0,1,9,5,0,0,0])
-notSolvedSudoku.push([0,9,8,0,0,0,0,6,0])
-notSolvedSudoku.push([8,0,0,0,6,0,0,0,3])
-notSolvedSudoku.push([4,0,0,8,0,3,0,0,1])
-notSolvedSudoku.push([7,0,0,0,2,0,0,0,6])
-notSolvedSudoku.push([0,6,0,0,0,0,2,8,0])
-notSolvedSudoku.push([0,0,0,4,1,9,0,0,5])
-notSolvedSudoku.push([0,0,0,0,8,0,0,7,9])
+solveButton.addEventListener('click', solveInputFieldsSudoku)
+clearButton.addEventListener('click', clearInputFields)
 
-solveSudoku(notSolvedSudoku)
+function solveInputFieldsSudoku() {
+    const sudokuInputFields = document.getElementsByClassName('sudoku-input')
 
+    const sudoku = []
+    let sudokuRow = []
+
+    for (const inputField of sudokuInputFields) {
+        if (inputField.value !== '') {
+            sudokuRow.push(Number.parseInt(inputField.value))
+        } else {
+            sudokuRow.push(0)
+        }
+
+        if (sudokuRow.length === 9) {
+            sudoku.push(sudokuRow)
+            sudokuRow = []
+        }
+    }
+
+    const solvedSudoku = solveSudoku(sudoku)
+
+    for (let i = 0; i < solvedSudoku.length; i++) {
+        for (let j = 0; j < solvedSudoku[i].length; j++) {
+            sudokuInputFields[i * 9 + j].value = solvedSudoku[i][j]
+        }
+    }
+
+}
+
+function clearInputFields() {
+    const sudokuInputFields = document.getElementsByClassName('sudoku-input')
+
+    for (const inputField of sudokuInputFields) {
+        inputField.value = ''
+    }
+}
