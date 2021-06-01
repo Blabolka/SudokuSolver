@@ -2,20 +2,28 @@ body {
     margin: 0;
 }
 
+/* center the sudoku table on page */
+.container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+/*-------------------TABLE--------------------*/
 .sudoku-table {
-    margin: auto;
     border-spacing: 0;
     border-collapse: collapse;
     width: 675px;
     height: 675px;
-    vertical-align: center;
 }
 
 .sudoku-row {
 }
 
 .sudoku-col {
-    border: 2px solid #000;
+    border: 1px solid #000;
     padding: 0;
     width: 75px;
     height: 75px;
@@ -30,4 +38,29 @@ body {
 
     outline: none;
     border: none;
+}
+
+/*---------------BUTTONS----------------*/
+.buttons {
+    display: flex;
+    justify-content: center;
+}
+
+.btn {
+    text-transform: uppercase;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    width: 100%;
+}
+
+.blue {
+    color: #fff;
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.grey {
+    color: #fff;
+    background-color: #6c757d;
+    border-color: #6c757d;
 }
